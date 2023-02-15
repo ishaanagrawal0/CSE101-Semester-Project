@@ -1,13 +1,12 @@
 import urllib.request
 import json
-import random
 
 with open("my_key.txt", "r") as f:
     my_key = f.read().rstrip("\n")
 
     base_url = "https://api.clashroyale.com/v1"
 
-    player_tag = "#22VVQLYLV"
+    player_tag = "#2LPQC098"
 
     endpoint = f"/players/%23{player_tag[1:]}"
 
@@ -36,5 +35,5 @@ with open("my_key.txt", "r") as f:
         else:
             print(data["cards"][i]["level"])
         i += 1
-        #print(data["cards"]["level"])
-        #print("Name: %s\nTrophies: %d\nArena: %s\nTag: %s\n\n" % (item["name"], item["trophies"], item["arena"], item["tag"]))
+        print(data["cards"]["level"])
+        print("Name: %s\nTrophies: %d\nArena: %s\nTag: %s\n\n" % (item["name"], item["trophies"], item["arena"], item["tag"]))
