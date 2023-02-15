@@ -73,4 +73,5 @@ def randomDeck():
 
     return deck, cardImage
 
-print(randomDeck())
+if __name__=="__main__":
+    print(randomDeck())

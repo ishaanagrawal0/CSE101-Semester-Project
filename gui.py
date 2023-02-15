@@ -1,25 +1,24 @@
 import tkinter as tk
 import urllib.request
 from PIL import ImageTk, Image
+import Deck_generator as dk
 
+img_urls=dk.randomDeck()[1]
+ids=[]
+for i in range(8):
+    urllib.request.urlretrieve(
+    f'{img_urls[i]}',
+    f"card_images\\c{i+1}.png")
+    ids.append(f"card_images\\c{i+1}.png")
 
-urllib.request.urlretrieve(
-  'https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png',
-   "c1.png")
-urllib.request.urlretrieve(
-  'https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png',
-   "c2.png")
-
-  
-# img = Image.open("gfg.png")
-# img.show()
 root = tk.Tk()
-
-
-ids = ["c1.png","c2.png"]
 imgs=[]
-for i in range(len(ids)):
+flag=False
+for i in range(8):
     imgs.append(ImageTk.PhotoImage(Image.open(f"{ids[i]}")))
-    tk.Label(root, image=imgs[-1], width=277, height=330).grid()
-
+    tk.Label(root, image=imgs[i], width=277, height=330).grid(row=int(flag),column=i//2)
+    flag=not flag
+    
+root.wm_title("Clash Helper")
+root.geometry("1150x700")
 root.mainloop()
