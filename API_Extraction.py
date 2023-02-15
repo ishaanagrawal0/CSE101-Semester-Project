@@ -43,5 +43,6 @@ def cardList(player_tag):
             #print(data["cards"]["level"])
             #print("Name: %s\nTrophies: %d\nArena: %s\nTag: %s\n\n" % (item["name"], item["trophies"], item["arena"], item["tag"]))
 
-print(cardList("#YCRYQV8"))
+if __name__=="__main__":
+    print(cardList("#YCRYQV8"))
 
