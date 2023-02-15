@@ -43,7 +43,5 @@ def cardList(player_tag):
             #print(data["cards"]["level"])
             #print("Name: %s\nTrophies: %d\nArena: %s\nTag: %s\n\n" % (item["name"], item["trophies"], item["arena"], item["tag"]))
 
-#print(cardList("#YCRYQV8"))
+print(cardList("#YCRYQV8"))
 
-d = list(cardList("#YCRYQV8").keys())
-print(d)
