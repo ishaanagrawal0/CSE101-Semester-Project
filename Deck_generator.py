@@ -28,6 +28,8 @@ def randomDeck():
     buildings = ['Goblin Hut', 'Barbarian Hut', 'Mortar', 'Inferno Tower', 'Cannon', 'Tombstone', 'Tesla', 'Bomb Tower', 'Furnace', 'Elixir Collector']
 
     support = ['Rascals', 'Royal Recruits', 'Goblins', 'Guards', 'Mini P.E.K.K.A', 'Witch', 'Skeleton Army', 'Goblin Cage', 'Dark Prince', 'Heal Spirit', 'Ice Spirit', 'Goblin Gang', 'Giant Skeleton', 'Fisherman', 'Fire Spirit', 'Electro Spirit', 'Cannon Cart', 'Battle Healer', 'Valkyrie', 'Golden Knight', 'Bowler', 'Bandit', 'Barbarian Barrel', 'Miner', 'Ice Golem', 'Skeletons', 'Monk', 'Barbarians', 'Bomber', 'Knight', 'Royal Ghost', 'Lumberjack']
+
+    champions = ['Archer Queen', 'Skeleton King', 'Golden Knight', 'Mighty Miner', 'Monk']
     
     x = random.choice(win_conditions)
     win_conditions.remove(x)
@@ -71,6 +73,14 @@ def randomDeck():
     for i in deck:
         cardImage.append(cardImageDict[i])
 
-    return deck, cardImage
+
+    counter = 0
+    for i in deck:
+        if i in champions:
+            counter += 1
+    if counter > 1:
+        randomDeck()
+    else:
+        return deck, cardImage
 
 print(randomDeck())
