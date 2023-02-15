@@ -46,3 +46,28 @@ def cardList(player_tag):
 if __name__=="__main__":
     print(cardList("#YCRYQV8"))
 
+def cardImage():
+    with open("my_key.txt", "r") as f:
+        my_key = f.read().rstrip("\n")
+
+        base_url = "https://api.clashroyale.com/v1/cards"
+
+        request = urllib.request.Request(
+                        base_url,
+                        None,
+                        {
+                            "Authorization": "Bearer %s" % my_key
+                        }
+                )
+        response = urllib.request.urlopen(request).read().decode("utf-8")
+
+        data = json.loads(response)
+        x = data["items"]
+        cardIcons = {}
+        for i in x:
+            tempName = i['name']
+            tempPNG = i['iconUrls']['medium']
+            cardIcons[tempName] = tempPNG
+        return cardIcons
+
+print(cardImage())
