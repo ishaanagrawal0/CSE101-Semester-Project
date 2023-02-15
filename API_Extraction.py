@@ -1,6 +1,5 @@
 import urllib.request
 import json
-import random
 
 def cardList(player_tag):
 
