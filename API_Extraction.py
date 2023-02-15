@@ -43,10 +43,8 @@ def cardList(player_tag):
             #print(data["cards"]["level"])
             #print("Name: %s\nTrophies: %d\nArena: %s\nTag: %s\n\n" % (item["name"], item["trophies"], item["arena"], item["tag"]))
 
-if __name__=="__main__":
-    print(cardList("#YCRYQV8"))
-
 def cardImage():
+
     with open("my_key.txt", "r") as f:
         my_key = f.read().rstrip("\n")
 
@@ -70,4 +68,6 @@ def cardImage():
             cardIcons[tempName] = tempPNG
         return cardIcons
 
-print(cardImage())
+if __name__=="__main__":
+    print(cardList("#YCRYQV8"))
+    print(cardImage())
