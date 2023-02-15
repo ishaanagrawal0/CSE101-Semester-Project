@@ -22,6 +22,7 @@ def cardList(player_tag):
         response = urllib.request.urlopen(request).read().decode("utf-8")
 
         data = json.loads(response)
+        print(data)
         i = 0
         while True:
             try:
@@ -43,7 +44,4 @@ def cardList(player_tag):
             #print(data["cards"]["level"])
             #print("Name: %s\nTrophies: %d\nArena: %s\nTag: %s\n\n" % (item["name"], item["trophies"], item["arena"], item["tag"]))
 
-#print(cardList("#YCRYQV8"))
-
-d = list(cardList("#YCRYQV8").keys())
-print(d)
+print(cardList("#22VVQLYLV"))
