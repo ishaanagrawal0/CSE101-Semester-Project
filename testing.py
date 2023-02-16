@@ -22,6 +22,7 @@ def cardList(player_tag):
         response = urllib.request.urlopen(request).read().decode("utf-8")
 
         data = json.loads(response)
+        print(data)
         i = 0
         while True:
             try:
@@ -43,31 +44,4 @@ def cardList(player_tag):
             #print(data["cards"]["level"])
             #print("Name: %s\nTrophies: %d\nArena: %s\nTag: %s\n\n" % (item["name"], item["trophies"], item["arena"], item["tag"]))
 
-def cardImage():
-
-    with open("my_key.txt", "r") as f:
-        my_key = f.read().rstrip("\n")
-
-        base_url = "https://api.clashroyale.com/v1/cards"
-
-        request = urllib.request.Request(
-                        base_url,
-                        None,
-                        {
-                            "Authorization": "Bearer %s" % my_key
-                        }
-                )
-        response = urllib.request.urlopen(request).read().decode("utf-8")
-
-        data = json.loads(response)
-        x = data["items"]
-        cardIcons = {}
-        for i in x:
-            tempName = i['name']
-            tempPNG = i['iconUrls']['medium']
-            cardIcons[tempName] = tempPNG
-        return cardIcons
-
-if __name__=="__main__":
-    print(cardList("#YCRYQV8"))
-    print(cardImage())
+print(cardList("#22VVQLYLV"))
