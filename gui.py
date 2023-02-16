@@ -3,7 +3,12 @@ import urllib.request
 from PIL import ImageTk, Image
 import Deck_generator as dk
 
-img_urls=dk.randomDeck()[1]
+User = int(input("Enter 1 for completely random deck, and 2 for a random deck with optimal card levels for path of legends: "))
+if User == 1:
+    img_urls=dk.randomDeck()[1]
+elif User == 2:
+    img_urls=dk.optimalDeck()[1]
+
 ids=[]
 for i in range(8):
     urllib.request.urlretrieve(f'{img_urls[i]}',
