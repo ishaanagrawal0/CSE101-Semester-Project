@@ -6,10 +6,9 @@ import Deck_generator as dk
 img_urls=dk.randomDeck()[1]
 ids=[]
 for i in range(8):
-    urllib.request.urlretrieve(
-    f'{img_urls[i]}',
-    f"card_images\\c{i+1}.png")
-    ids.append(f"card_images\\c{i+1}.png")
+    urllib.request.urlretrieve(f'{img_urls[i]}',
+    f"c{i+1}.png")
+    ids.append(f"c{i+1}.png")
 
 root = tk.Tk()
 imgs=[]
