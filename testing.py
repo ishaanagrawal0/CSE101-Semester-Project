@@ -1,3 +1,4 @@
+'''
 import urllib.request
 import json
 
@@ -45,3 +46,6 @@ def cardList(player_tag):
             #print("Name: %s\nTrophies: %d\nArena: %s\nTag: %s\n\n" % (item["name"], item["trophies"], item["arena"], item["tag"]))
 
 print(cardList("#22VVQLYLV"))
+'''
+
+print(int(True))
