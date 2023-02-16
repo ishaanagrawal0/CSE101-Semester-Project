@@ -18,13 +18,13 @@ clan=api.clan_members("#GRY2LP8P")
 
 for i in clan:
     unpack=list(info(i).values())
-    bracket.update({clan[i]:formulae(unpack[0],unpack[1],unpack[2],unpack[3])})
+    bracket.update({i:formulae(unpack[0],unpack[1],unpack[2],unpack[3])})
 
 extraction=list(bracket.items())
 extraction.sort(key=lambda x:x[1])
 
 j=0
 while j<len(extraction):
-    print(api.get_data(extraction[j][1])['name']+"paired with"+api.get_data(extraction[j+1][1])["name"])
+    print(api.get_data(extraction[j][0])['name']+" paired with "+api.get_data(extraction[j+1][0])["name"])
     
     j+=2
