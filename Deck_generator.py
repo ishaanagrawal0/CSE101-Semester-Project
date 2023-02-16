@@ -119,6 +119,8 @@ def optimalDeck():
         cardLevelWeigths.append(sum/counter)
     
     newWinConditions, newSpells, newAirHitting, newBuildings, newSupport, newChampions = [], [], [], [], [], []
-    
+      
 
-print(optimalDeck())    
+if __name__=="__main__":
+    print(randomDeck())
+    print(optimalDeck())  
