@@ -1,27 +1,34 @@
 import urllib.request
 import json
 
-def cardList(player_tag):
-
+def get_data(player_tag):
     with open("my_key.txt", "r") as f:
         my_key = f.read().rstrip("\n")
 
-        base_url = "https://api.clashroyale.com/v1"
+    base_url = "https://api.clashroyale.com/v1"
+        
+    endpoint = f"/players/%23{player_tag[1:]}"
 
-        levels = {}
-
-        endpoint = f"/players/%23{player_tag[1:]}"
-
-        request = urllib.request.Request(
+    request = urllib.request.Request(
                         base_url+endpoint,
                         None,
                         {
                             "Authorization": "Bearer %s" % my_key
                         }
                 )
-        response = urllib.request.urlopen(request).read().decode("utf-8")
+    response = urllib.request.urlopen(request).read().decode("utf-8")
 
-        data = json.loads(response)
+    return json.loads(response)
+
+def player_stats(player_tag):
+    
+    return get_data(player_tag)
+
+def cardList(player_tag):
+    
+        data=get_data(player_tag)
+        levels={}
+        
         i = 0
         while True:
             try:
@@ -42,7 +49,7 @@ def cardList(player_tag):
                 return levels
             #print(data["cards"]["level"])
             #print("Name: %s\nTrophies: %d\nArena: %s\nTag: %s\n\n" % (item["name"], item["trophies"], item["arena"], item["tag"]))
-
+    
 def cardImage():
 
     with open("my_key.txt", "r") as f:
@@ -60,6 +67,7 @@ def cardImage():
         response = urllib.request.urlopen(request).read().decode("utf-8")
 
         data = json.loads(response)
+        
         x = data["items"]
         cardIcons = {}
         for i in x:
@@ -68,6 +76,31 @@ def cardImage():
             cardIcons[tempName] = tempPNG
         return cardIcons
 
+def clan_members(clan_tag):
+
+    with open("my_key.txt", "r") as f:
+        my_key = f.read().rstrip("\n")
+
+        base_url = "https://api.clashroyale.com/v1"
+
+        endpoint = f"/clans/%23{clan_tag[1:]}/members"
+
+        request = urllib.request.Request(
+                        base_url+endpoint,
+                        None,
+                        {
+                            "Authorization": "Bearer %s" % my_key
+                        }
+                )
+        response = urllib.request.urlopen(request).read().decode("utf-8")
+        response = eval(response)
+        x = response["items"] #x is a list
+        newDict = {}
+        for i in x:
+            newDict[i["tag"]] = i["name"]        
+        return newDict
+
 if __name__=="__main__":
     print(cardList("#YCRYQV8"))
     print(cardImage())
+    print(player_stats("#YCRYQV8"))
